@@ -60,3 +60,18 @@ use('bosch')
 db.people.find({ $and: [{nome: 'Queila' }, {sobrenome: 'Bosch'}]})
 db.people.find({salario: { $gt: 1000}})
 db.people.find({salario: { $gte: 1000}}, {nome: 1, sobrenome: 1})
+
+use('bosch')
+db.people.updateOne(
+    {_id: ObjectId('6981f4d4795733d999212501') },
+    {$set: {nome: "NovoNome"}}
+)
+
+use('bosch')
+db.people.updateMany(
+    { salario: 10000},
+    {$set: {salario: 12000}}
+)
+
+use('bosch')
+db.people.deleteMany({nome: /^D/})
