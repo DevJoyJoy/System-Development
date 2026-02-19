@@ -11,6 +11,21 @@ router
 })
     .get('/users', (req: Request, res: Response) => {
         res.status(200).send({ users : people})
-    })
+})
+    .get('/users/:id', (req: Request, res: Response) => {
+        const { id } = req.params
+        let convertedId = Number(id)
+        res.status(200).send({ response : people[convertedId]})
+})
+    .get('/filtro', (req: Request, res: Response) => {
+        const { name, lastName } = req.query
+        res.status(200).send( {response : `${name} ${lastName}`})
 
+})
+    .put('/atualizar', (req: Request, res: Response) => {
+        const { id } = req.params
+        const {name, lastName} = req.body
+        res.status(200).send( {response : ` Atualizando usuário: ${id} -> ${name} ${lastName}`})
+
+})
 export default router;
