@@ -4,7 +4,7 @@ interface users {
     id: Int16Array,
     name: string,
     email: string,
-    function: string,
+    func: string,
     active: boolean,
     createdAt: Date
 }
@@ -14,9 +14,17 @@ const user: users[] = [];
 
 router
     .post('/register', (req: Request, res: Response) => {
-        const {id, name, lastName} = req.body
-        user.push({id, name, email, function, active, createdAt})
-        res.status(200).send({message: "User " + name + " " + lastName + " cadatrado! ID: " + id})
+        const {id, name, email, active, createdAt, func} = req.body
+        user.push({id, name, email, func, active, createdAt})
+        res.status(200).send({message: "User " + name + " cadatrado! ID: " + id})
+    })
+    .get('/users', (req: Request, res: Response) => {
+        res.status(200).send({ users : user})
+    })
+    .get('/users/:id', (req: Request, res: Response) => {
+        const { id } = req.params
+        let convertId = Number(id)
+        res.status(200).send({ users : user[convertId]})
     })
 
 export default router;
