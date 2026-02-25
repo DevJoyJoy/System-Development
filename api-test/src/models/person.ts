@@ -1,0 +1,17 @@
+import mongoose, { Schema, Document } from 'mongoose';
+
+interface IPerson extends Document {
+    name: string;
+    lastnNme: string
+    age: number;
+}
+
+const personSchema: Schema = new Schema({
+    name: { type: String, required: true },
+    lastName: { type: String, required: true },
+    age: { type: Number, required: true },
+});
+
+const Person = mongoose.model<IPerson>('Person', personSchema, 'People');
+
+export default Person;

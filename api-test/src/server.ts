@@ -1,6 +1,8 @@
 import express from 'express'
 import routes from './routes/route.ts'
+import connectDB from './database/database.ts';
 
+connectDB();
 
 const port = 8080;
 const app = express()
