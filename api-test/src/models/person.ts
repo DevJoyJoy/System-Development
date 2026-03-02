@@ -2,7 +2,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 
 interface IPerson extends Document {
     name: string;
-    lastnNme: string
+    lastName: string
     age: number;
 }
 
