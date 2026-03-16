@@ -5,6 +5,8 @@ export const validadeMain = (req: Request, res: Response, next: NextFunction) =>
 
     if (!name || !price) {
         return res.status(400).json({ error: "Nome e preço são obrigatórios" });
+    } else if (!name || !price) {
+        
     }
 
     next();

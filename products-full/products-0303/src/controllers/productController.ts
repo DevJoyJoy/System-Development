@@ -2,9 +2,19 @@ import { Request, Response } from "express";
 import Product from '../models/products.ts';
 
 class ProductController {
+    static async getProductId(req: Request, res: Response){
+        try {
+            const { id } = req.params;
+            const product = await Product.findById(id);
+            res.status(200).json(product);
+        } catch (error) {
+            res.status(400).json({ message: 'Erro ao buscar os produtos', error });
+        }
+    }
+    
     static async getProducts(req: Request, res: Response){
         try {
-            const product = await Product.findById();
+            const product = await Product.find();
             res.status(200).json(product);
         } catch (error) {
             res.status(400).json({ message: 'Erro ao buscar os produtos', error });
@@ -28,6 +38,7 @@ class ProductController {
         
         try {
             const product = await Product.findByIdAndUpdate(id, { name, description, price, stock, category, createdAt}, { new: true });
+            
             if (!product) {
                 res.status(404).json({ message: 'Produto não encontrado' });
             }

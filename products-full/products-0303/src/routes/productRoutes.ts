@@ -7,7 +7,8 @@ const router: Router = express.Router();
 
 router
     .post('/register', validadeMain, ProductController.postProduct)
-    .get('/product/:id', ProductController.getProducts)
+    .get('/product/:id', ProductController.getProductId)
+    .get('/products', ProductController.getProducts)
     .put('/product/:id', ProductController.putProduct)
     .delete('/product/:id', ProductController.deleteProduct);
 export default router;
