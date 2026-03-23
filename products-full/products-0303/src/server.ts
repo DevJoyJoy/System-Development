@@ -8,7 +8,8 @@ const port = 8080;
 connectDB();
 
 app.use(cors({
-    origin: '*' //o cors precisa ficar antes do routes para as rotas serem declaradas com a configuração dele!! :)
+    origin: 'http://localhost:5173'  //o cors precisa ficar antes do routes para as rotas serem declaradas com a configuração dele!! :)
+
 }))
 
 routes(app)
