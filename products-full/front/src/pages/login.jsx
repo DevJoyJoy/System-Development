@@ -11,7 +11,7 @@ export const Login = () => {
                 <br />
                 <input type="text" className="bg-white rounded-xl w-[30vw] h-[4vh] p-2 text-gray-400" placeholder="Email"/>
                 <br />
-                <input type="text" className="bg-white rounded-xl w-[30vw] h-[4vh] p-2 text-gray-400" placeholder="Email"/>
+                <input type="text" className="bg-white rounded-xl w-[30vw] h-[4vh] p-2 text-gray-400" placeholder="Senha"/>
                 <br />
                 <button className="bg-red-800 hover:bg-red-900 text-white font-bold w-[30vw] h-[4vh] rounded-xl">Entrar</button>
             </div>
