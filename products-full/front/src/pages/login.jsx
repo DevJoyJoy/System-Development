@@ -12,11 +12,14 @@ export const Login = () => {
     const handleLogin = async () => {
         try {
             const response = await axios.post('http://localhost:8080/api/auth/login', {email, password})
+
+            sessionStorage.setItem('token', response.data.token)
             Swal.fire({
                 title: "Sucesso!",
                 text: "Usuário registrado com sucesso!",
                 icon: "sucess"
             })
+            navigate('/products')
         } catch {
             Swal.fire({
                 title: "Erro!",
