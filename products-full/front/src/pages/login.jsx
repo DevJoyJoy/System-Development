@@ -16,7 +16,7 @@ export const Login = () => {
             sessionStorage.setItem('token', response.data.token)
             Swal.fire({
                 title: "Sucesso!",
-                text: "Usuário registrado com sucesso!",
+                text: "Usuário logado com sucesso!",
                 icon: "sucess"
             })
             navigate('/products')

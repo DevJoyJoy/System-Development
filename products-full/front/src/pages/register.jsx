@@ -17,6 +17,7 @@ export const Register = () => {
                 text: "Usuário registrado com sucesso!",
                 icon: "sucess"
             })
+            navigate('/login')
         } catch {
             Swal.fire({
                 title: "Erro!",
