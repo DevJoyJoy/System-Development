@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import axios from 'axios'
 import { useNavigate } from "react-router-dom"
+import Swal from 'sweetalert2'
+
 
 export const Products = () => {
   const navigate = useNavigate()
@@ -14,6 +16,20 @@ export const Products = () => {
   useEffect(() => {
     fetchProducts();
   }, [])
+
+  const deleteProduct = async (_id) => {
+    await axios.delete(`http://localhost:8080/api/products/product/${_id}`)
+    fetchProducts()
+    Swal.fire({
+      title: "Sucesso!",
+      text: "Produto deletado com sucesso!",
+      icon: "success"
+    })
+  }
+
+  const updateProduct = async (_id) => {
+    return navigate(`/update/${_id}`)
+  }
 
   return (
     <>
@@ -36,10 +52,13 @@ export const Products = () => {
                   <span>Descrição: {product.description}</span>
                   <br />
                   <span>Estoque: {product.stock}</span>
+                  <button onClick={() => deleteProduct(product._id)} className="flex bg-purple-400 p-3 cursor-pointer mt-4 rounded-xl text-white transition hover:bg-purple-600">Deletar</button>
+                  <button onClick={() => updateProduct(product._id)} className="flex bg-purple-400 p-3 cursor-pointer mt-4 rounded-xl text-white transition hover:bg-purple-600">Atualizar</button>
                 </div>
               )
             })
           }
+
         </div>
       </div>
     </>

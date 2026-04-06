@@ -52,10 +52,10 @@ class ProductController {
         const { id } = req.params;
         
         try {
-            const product = await Product.findByIdAndDelete(id);
-            if (!product) {
-                res.status(404).json({ message: 'Produto não encontrado' });
-            }
+            await Product.findByIdAndDelete(id);
+            // if (!product) {
+            //     res.status(404).json({ message: 'Produto não encontrado' });
+            // }
             res.status(200).json({ message: 'Produto deletado com sucesso' });
         } catch (error) {
             res.status(400).json({ message: 'Erro ao deletar produto', error });
