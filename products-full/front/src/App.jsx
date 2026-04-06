@@ -5,6 +5,7 @@ import { Register } from './pages/register.jsx'
 import { Login } from './pages/login.jsx'
 import { ProductRegister } from './pages/productRegister.jsx'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { ProductUpdate } from './pages/updateProduct.jsx'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/productsRegister' element={<ProductRegister/>}/>
+        <Route path='/update/:id' element={<ProductUpdate/>}/>
       </Routes>
     </BrowserRouter>
     </>
