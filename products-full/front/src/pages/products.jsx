@@ -18,12 +18,23 @@ export const Products = () => {
   }, [])
 
   const deleteProduct = async (_id) => {
-    await axios.delete(`http://localhost:8080/api/products/product/${_id}`)
-    fetchProducts()
     Swal.fire({
-      title: "Sucesso!",
-      text: "Produto deletado com sucesso!",
-      icon: "success"
+      title: "Deseja deletar o produto?",
+      showCancelButton: true,
+      showConfirmButton: true,
+      confirmButtonText: "Confirmar",
+      cancelButtonText: "Cancelar",
+    }).then(async (result) => {
+      if(result.isConfirmed) {
+        try{
+          await axios.delete(`http://localhost:8080/api/products/product/${_id}`)
+          Swal.fire("Deletado com sucesso!", "", "success")
+          fetchProducts()
+        }
+        catch {
+          Swal.fire("Sem alteração!", "", "error")
+        }
+      }
     })
   }
 
