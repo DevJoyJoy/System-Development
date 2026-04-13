@@ -13,13 +13,12 @@ export const ProductUpdate = () => {
     const { id } = useParams()
 
     const getProductData = async () => {
-        const response = axios.get(`http://localhost:8080/api/products/product/${id}`)
-        console.log(response.data)
-        setName(response.data.response.name);
-        setDescription(response.data.response.description);
-        setPrice(response.data.response.price);
-        setStock(response.data.response.stock);
-        setCategory(response.data.response.category);
+        const response = await axios.get(`http://localhost:8080/api/products/product/${id}`)
+        setName(response.data.product.name);
+        setDescription(response.data.product.description);
+        setPrice(response.data.product.price);
+        setStock(response.data.product.stock);
+        setCategory(response.data.product.category);
     }
 
     const updateProduct = async (_id) => {

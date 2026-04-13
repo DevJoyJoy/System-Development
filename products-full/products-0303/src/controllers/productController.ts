@@ -6,7 +6,7 @@ class ProductController {
         try {
             const { id } = req.params;
             const product = await Product.findById(id);
-            res.status(200).json(product);
+            res.status(200).json({product});
         } catch (error) {
             res.status(400).json({ message: 'Erro ao buscar os produtos', error });
         }
