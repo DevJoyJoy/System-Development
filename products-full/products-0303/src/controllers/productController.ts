@@ -1,7 +1,18 @@
 import { Request, Response } from "express";
 import Product from '../models/products.ts';
+import { registerProductDTO } from "../dto/productDTO.ts";
+import { register } from "../services/product.service.ts";
 
 class ProductController {
+    static async postProduct(req: Request, res: Response){
+        const data: registerProductDTO = req.body
+        try{
+            await register(data)
+            return res.status(201).send({message: "Produto cadastrado!"})
+        } catch {
+            return res.status(500).send({message: "Erro!"})
+        }
+    }
     static async getProductId(req: Request, res: Response){
         try {
             const { id } = req.params;
@@ -21,16 +32,6 @@ class ProductController {
         }
     }
     
-    static async postProduct(req: Request, res: Response){
-        const { name, description, price, stock, category, createdAt } = req.body;
-        try {
-            const product = new Product({ name, description, price, stock, category, createdAt });
-            await product.save();
-            res.status(201).json(product);
-        } catch (error) {
-            res.status(400).json({ message: 'Erro ao criar produto', error });
-        }
-    }
 
     static async putProduct(req: Request, res: Response){
         const { id } = req.params;
