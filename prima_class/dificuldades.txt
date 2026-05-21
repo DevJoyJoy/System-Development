@@ -1,0 +1,28 @@
+- Server OK
+- Config OK
+- Database OK
+
+
+O QUE FALTA:
+
+GET /products
+Filtros obrigatórios via query params:
+- name (buscar por nome usando regex, case insensitive)
+- category (igualdade)
+- minPrice (price &gt;= valor)
+- maxPrice (price &lt;= valor)
+- inStock=true (stock &gt; 0)
+
+PUT /products/:id
+- Usar validateObjectId.
+
+
+Controllers - create
+Controllers - findAll
+Controllers - findById
+Controllers - update
+Controllers - remove
+(Usar async/await, Não colocar lógica de rota dentro do arquivo de rotas, Não repetir código desnecessariamente.)
+
+Middlewares - Verificar se existem campos necessários vazios
+Middlewares - Verificar se os tipos de dados coincide com os da model
