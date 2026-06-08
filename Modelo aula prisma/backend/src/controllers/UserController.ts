@@ -10,7 +10,7 @@ export default class UserController {
             return res.status(200).send({response: "Usuário registrado com sucesso!"})
         }
         catch(e){
-            return res.status(500).send({response: "Ocorreu algum erro no servidor..."})
+            return res.status(500).send({response: "Ocorreu algum erro no servidor...", e})
         }
     }
 
