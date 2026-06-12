@@ -1,0 +1,14 @@
+-- CreateTable
+CREATE TABLE `Ticket` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(191) NOT NULL,
+    `description` VARCHAR(191) NOT NULL,
+    `sector` VARCHAR(191) NOT NULL,
+    `priority` VARCHAR(191) NOT NULL,
+    `status` VARCHAR(191) NOT NULL DEFAULT 'ABERTO',
+    `createdAt` DATETIME(3) NOT NULL,
+    `finishedAt` DATETIME(3) NOT NULL,
+
+    UNIQUE INDEX `Ticket_title_key`(`title`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

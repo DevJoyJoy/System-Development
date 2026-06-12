@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Ticket {
+  id Int @default(autoincrement()) @id
+  title String @unique
+  description String 
+  sector String
+  priority String
+  status String @default("ABERTO")
+  createdAt DateTime
+  finishedAt DateTime
+}
