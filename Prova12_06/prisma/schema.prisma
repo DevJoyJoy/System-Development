@@ -15,6 +15,6 @@ model Ticket {
   sector String
   priority String
   status String @default("ABERTO")
-  createdAt DateTime
-  finishedAt DateTime
+  createdAt DateTime @default(now())
+  finishedAt DateTime? @db.Date 
 }

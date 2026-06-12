@@ -2,10 +2,9 @@ import { registerTicketDTO, alterTicketDTO, startTicketDTO, finishTicketDTO } fr
 import { prisma } from '../lib/prisma.js'
 
 export const createTicket = async(data: registerTicketDTO)=>{
-    const date = Date.now()
     const {title, description, sector, priority} = data
     await prisma.ticket.create({
-        data: {title, description, sector, priority, date}
+        data: {title, description, sector, priority}
     })
 }
 
@@ -43,7 +42,7 @@ export const startTicket = async(id: number)=>{
 
 export const finishTicket = async(id: number)=>{
     const status = "EM_ANDAMENTO"
-    const date = Date.now()
+    const date = new Date()
     await prisma.ticket.update({
         where: {id},
         data: {status, date}
